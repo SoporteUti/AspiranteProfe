@@ -14,8 +14,22 @@ class CreateRequisitosTable extends Migration
     public function up()
     {
         Schema::create('requisitos', function (Blueprint $table) {
+            $table->engine="InnoDB";
+
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('numaspirante');
+            $table->integer("anioegresob");
+            $table->integer("anioingresoues");
+            $table->float("notapromb");
+            $table->string("notaavanzo");
+            $table->string("notapaes");
+            $table->integer("pruebaling");
+            $table->integer("pruebapsico");
+
+
+       $table->foreign('numaspirante')->references('numaspirante')->on('aspirantes')->onDelete("cascade");
+
+       $table->timestamps();
         });
     }
 

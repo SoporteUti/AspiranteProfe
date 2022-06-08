@@ -14,7 +14,13 @@ class CreateDocentesTable extends Migration
     public function up()
     {
         Schema::create('docentes', function (Blueprint $table) {
-            $table->id();
+
+            $table->engine="InnoDB";
+            //$table->id();
+            $table->string("email")->index();
+            $table->string("nombre");
+            $table->string("apellido");
+            $table->string("especialidad");
             $table->timestamps();
         });
     }

@@ -14,7 +14,13 @@ class CreateAspirantesTable extends Migration
     public function up()
     {
         Schema::create('aspirantes', function (Blueprint $table) {
+            $table->engine="InnoDB";
             $table->id();
+            $table->unsignedBigInteger('numaspirante')->index();
+            $table->string('nombre');
+            $table->string('apellido');
+            $table->string('email');
+            $table->string('carrera');
             $table->timestamps();
         });
     }

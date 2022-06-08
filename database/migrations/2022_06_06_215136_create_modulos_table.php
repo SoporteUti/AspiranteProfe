@@ -14,7 +14,10 @@ class CreateModulosTable extends Migration
     public function up()
     {
         Schema::create('modulos', function (Blueprint $table) {
+            $table->engine="InnoDB";
             $table->id();
+            $table->unsignedBigInteger("idmodulo")->index();
+            $table->string("nombremodulo");
             $table->timestamps();
         });
     }
