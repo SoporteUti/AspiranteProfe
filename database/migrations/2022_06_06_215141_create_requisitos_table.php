@@ -24,7 +24,7 @@ class CreateRequisitosTable extends Migration
             $table->string("notaavanzo")->nullable();
             $table->string("notapaes")->nullable();
             $table->integer("pruebaling")->nullable();
-            $table->integer("pruebapsico")->nullable();
+            $table->string("pruebapsico")->nullable();
 
 
        $table->foreign('numaspirante')->references('numaspirante')->on('aspirantes')->onDelete("cascade");
