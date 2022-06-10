@@ -18,13 +18,13 @@ class CreateRequisitosTable extends Migration
 
             $table->id();
             $table->unsignedBigInteger('numaspirante');
-            $table->integer("anioegresob");
-            $table->integer("anioingresoues");
-            $table->float("notapromb");
-            $table->string("notaavanzo");
-            $table->string("notapaes");
-            $table->integer("pruebaling");
-            $table->integer("pruebapsico");
+            $table->integer("anioegresob")->nullable();
+            $table->integer("anioingresoues")->nullable();
+            $table->float("notapromb")->nullable();
+            $table->string("notaavanzo")->nullable();
+            $table->string("notapaes")->nullable();
+            $table->integer("pruebaling")->nullable();
+            $table->integer("pruebapsico")->nullable();
 
 
        $table->foreign('numaspirante')->references('numaspirante')->on('aspirantes')->onDelete("cascade");

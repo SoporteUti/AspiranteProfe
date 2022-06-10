@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aspirantes;
+use App\Models\Requisitos;
 //use Aspirantes as GlobalAspirantes;
 use Illuminate\Http\Request;
 
@@ -42,17 +43,51 @@ class AspirantesController extends Controller
     public function store(Request $request)
     {
         // guardar regsitro en base de datos
-        $datos=request()->except('_token');
+        //$datos=request()->except('_token');
+        $request->numaspirante;
+        $request->nombre;
+        $request->apellido;
+        $request->email;
+        $request->carrera;
+        $request->anioegresob;
+        $request->anioingresoues;
+        $request->notapromb;
+        $request->notaavanzo;
+        $request->notapaes;
+        $request->pruebaling;
+        $request->pruebapsico;
+        //$num=$request->numaspirante;  captura un valor del arreglo de datos enviados por el form
+        /*numaspirante,
+        //echo $num;
+       // echo dd($request);*/
 
         if($request->numaspirante >0){
-            aspirantes::insert($datos);
+            //insercion en tabla aspirante
+            $iaspirante= new aspirantes;//::insert($datos);
+            $iaspirante->numaspirante=$request->numaspirante;
+            $iaspirante->nombre=$request->nombre;
+            $iaspirante->apellido=$request->apellido;
+            $iaspirante->email=$request->email;
+            $iaspirante->carrera=$request->carrera;
+            $iaspirante->save();
+            //insercion en tabla requisitos
+            $irequisitos= new requisitos;//::insert($datos);
+            $irequisitos->numaspirante=$request->numaspirante;
+            $irequisitos->anioegresob=$request->anioegresob;
+            $irequisitos->anioingresoues=$request->anioingresoues;
+            $irequisitos->notapromb=$request->notapromb;
+            $irequisitos->notaavanzo=$request->notaavanzo;
+            $irequisitos->notapaes=$request->notapaes;
+            $irequisitos->pruebaling=$request->pruebaling;
+            $irequisitos->pruebapsico=$request->pruebapsico;
+            $irequisitos->save();
+           //pendiente mejorar requisitos::insert($num);
 
             }else{
                 echo "numero de aspirante no valido \n";}
-        return response()->json($datos);
-
-
-
+        //return response()->json($datos);
+        $consultadatos['asp']=Aspirantes::paginate(15);
+        return view('Aspirantes.lista',$consultadatos);
 
     }
 
@@ -77,8 +112,8 @@ class AspirantesController extends Controller
     public function edit($id)
     {
         //buscar registro en base de datos
-        $aspirantes=Aspirantes::findOrFail($id);
-        return view('Aspirantes.edit', compact('aspirantes') );
+        $aspirante=Aspirantes::findOrFail($id);
+        return view('Aspirantes.edit', compact('aspirante') );
     }
 
     /**
@@ -97,7 +132,7 @@ class AspirantesController extends Controller
 
 //        $aspirantes=aspirantes::findOrFail($id);
 //        return view('Aspirantes.edit', compact('aspirantes') );
-         $consultadatos['aspirantes']=Aspirantes::paginate(5);
+         $consultadatos['asp']=Aspirantes::paginate(15);
         return view('Aspirantes.lista',$consultadatos);
     }
 

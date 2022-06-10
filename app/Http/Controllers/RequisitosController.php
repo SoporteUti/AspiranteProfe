@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aspirantes;
 use App\Models\Requisitos;
 use Illuminate\Http\Request;
 
@@ -47,6 +48,7 @@ class RequisitosController extends Controller
     public function show(Requisitos $requisitos)
     {
         //
+
     }
 
     /**

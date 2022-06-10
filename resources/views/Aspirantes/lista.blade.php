@@ -1,7 +1,13 @@
-mostrar la lista de estudiantes
+<!DOCTYPE html>
+
+
 <a href="{{url('Aspirantes/create')}}">Registrar aspirantes</a>
 <table class="table table-light">
     <thead class="thead-light">
+    <tr>
+        <th></th>
+        <th class="" colspan="6">NOMINA DE ASPIRANTES</th>
+    </tr>
     <tr>
         <th>#</th>
         <th>numero de aspirantes</th>
@@ -26,14 +32,11 @@ mostrar la lista de estudiantes
         <td>{{$aspirante->carrera}}</td>
         <td>
             <a href="{{url('/Aspirantes/'.$aspirante->id.'/edit')}}">Editar</a>
-
-
-            |
+           |
                 <form action={{url('/Aspirantes/'.$aspirante->id)}} method="POST">
-                    @csrf
-                    {{ method_field('DELETE')}}
+                    @csrf  {{ method_field('DELETE')}}
                 <input type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
-                </form> Borrar</td>
+                </form>
     </tr>
     @endforeach
 </tbody>
