@@ -6,6 +6,7 @@ use App\Models\Aspirantes;
 use App\Models\Requisitos;
 //use Aspirantes as GlobalAspirantes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AspirantesController extends Controller
 {
@@ -112,7 +113,14 @@ class AspirantesController extends Controller
     public function edit($id)
     {
         //buscar registro en base de datos
-        $aspirante=Aspirantes::findOrFail($id);
+
+        $aspirante=DB::table('aspirantes')
+        -> join('requisitos','aspirantes.numaspirante','=','requisitos.numaspirante')
+        ->where('aspirantes.id','=',$id)->get();
+        //echo dd($aspirante);
+    //    $asp=Aspirantes::findOrFail($id);
+      //  $req=Requisitos::findOrFail($id);
+        //$aspirante=$asp.$req;
         return view('Aspirantes.edit', compact('aspirante') );
     }
 

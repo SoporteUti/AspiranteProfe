@@ -9,19 +9,26 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Control de requisitos para aspirantes a Profesorado</a>
+        <a class="navbar-brand" href="#">
+            Control para aspirantes a Profesorado
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon">
+          </span>
         </button>
         <div class="collapse navbar-collapse" id="navbar-menu">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Inicio<span class="sr-only">(actual)</span></a>
+                <a class="nav-link" href="{{url('Aspirantes/create')}}">
+                    Agregar de aspirantes
+                </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Enlace</a>
+                <a class="nav-link" href="#">
+                  Docentes
+                </a>
             </li>
-            <li class="nav-item dropdown">
+            <!--li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Expandir
               </a>
@@ -29,12 +36,13 @@
                 <a class="dropdown-item" href="#">Enlace</a>
                 <a class="dropdown-item" href="#">Otro enlace</a>
               </div>
-            </li>
+            </li-->
           </ul>
         </div>
       </nav>
 
-<a href="{{url('Aspirantes/create')}}">Registrar aspirantes</a>
+<!--a href="{//{url('Aspirantes/create')}}">Registrar aspirantes</a-->
+<br><br><br>
 <table class="table table-light">
     <thead class="thead-light">
     <tr>
