@@ -108,15 +108,16 @@ class AspirantesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Aspirantes  $aspirantes
+     * @param  \App\Models\Requisitos  $requisitos
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($numaspirante)
     {
         //buscar registro en base de datos
 
         $aspirante=DB::table('aspirantes')
         -> join('requisitos','aspirantes.numaspirante','=','requisitos.numaspirante')
-        ->where('aspirantes.id','=',$id)->get();
+        ->where('aspirantes.numaspirante','=',$numaspirante)->get();
         //echo dd($aspirante);
     //    $asp=Aspirantes::findOrFail($id);
       //  $req=Requisitos::findOrFail($id);
@@ -130,17 +131,40 @@ class AspirantesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Aspirantes  $aspirantes
      * @return \Illuminate\Http\Response
+     * @param  \App\Models\Requisitos  $aspirantes
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $numaspirante)
     {
+
         //modifica datos en bd
+        //insercion en tabla aspirante
+        $iaspirante= Aspirantes::findOrFail($numaspirante);//::insert($datos);
+        $iaspirante->numaspirante=$request->numaspirante;
+        $iaspirante->nombre=$request->nombre;
+        $iaspirante->apellido=$request->apellido;
+        $iaspirante->email=$request->email;
+        $iaspirante->carrera=$request->carrera;
+        $iaspirante->save();
+
+        //insercion en tabla requisitos
+        $irequisitos= Requisitos::findOrFail($numaspirante);//::insert($datos);
+        $irequisitos->numaspirante=$request->numaspirante;
+        $irequisitos->anioegresob=$request->anioegresob;
+        $irequisitos->anioingresoues=$request->anioingresoues;
+        $irequisitos->notapromb=$request->notapromb;
+        $irequisitos->notaavanzo=$request->notaavanzo;
+        $irequisitos->notapaes=$request->notapaes;
+        $irequisitos->pruebaling=$request->pruebaling;
+        $irequisitos->pruebapsico=$request->pruebapsico;
+        $irequisitos->save();
         //recibe datos a excepcion de token y metodo
-        $datos=request()->except(['_token','_method']);
-        aspirantes::where('id','=',$id)->update($datos);
+        //$datos=request()->except(['_token','_method']);
+        //aspirantes::where('numaspirante','=',$numaspirante)->update($datos);
 
 //        $aspirantes=aspirantes::findOrFail($id);
 //        return view('Aspirantes.edit', compact('aspirantes') );
          $consultadatos['asp']=Aspirantes::paginate(15);
+         
         return view('Aspirantes.lista',$consultadatos);
     }
 

@@ -1,3 +1,10 @@
+<?php
+
+//include 'header.blade.php';
+//require 'header.blade';
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,7 +15,18 @@
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class=' bg-dark embed-responsive'>
+<header class=" d-flex justify-content-center py-3 flex-wrap border-bottom">
+<ul class="nav nav-pills">
+    <li class="nav-item"><a class="nav-link link-light" aria-current="page" href="{{url('Aspirantes/')}}">Aspirantes</a></li>
+    <li class="nav-item"><a class="nav-link link-light" aria-current="page" href="#">Docentes</a></li>
+    <li class="nav-item"><a class="nav-link text-light" aria-current="page" href="#">Modulos</a></li>
+    <li class="nav-item"><a class="nav-link text-light" aria-current="page" href="#">Notas</a></li>
+
+</ul>
+</header>
+</nav>
+    <!--nav role="navigation" class="navbar navbar-collapse navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             Control para aspirantes a Profesorado
         </a>
@@ -28,7 +46,7 @@
                   Docentes
                 </a>
             </li>
-            <!--li class="nav-item dropdown">
+            <li class="class dropdown nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Expandir
               </a>
@@ -36,13 +54,19 @@
                 <a class="dropdown-item" href="#">Enlace</a>
                 <a class="dropdown-item" href="#">Otro enlace</a>
               </div>
-            </li-->
+            </li>
           </ul>
         </div>
-      </nav>
+      </nav-->
 
 <!--a href="{//{url('Aspirantes/create')}}">Registrar aspirantes</a-->
-<br><br><br>
+<br><br>
+<a class="nav-link" href="{{url('Aspirantes/create')}}">
+    Agregar de aspirantes
+</a>
+<br>
+
+
 <table class="table table-light">
     <thead class="thead-light">
     <tr>
@@ -72,11 +96,11 @@
         <td>{{$aspirante->email}}</td>
         <td>{{$aspirante->carrera}}</td>
         <td>
-            <a href="{{url('/Aspirantes/'.$aspirante->id.'/edit')}}">Editar</a>
+            <a class='nav-link active' href="{{url('/Aspirantes/'.$aspirante->numaspirante.'/edit')}}">Editar</a>
            |
-                <form action={{url('/Aspirantes/'.$aspirante->id)}} method="POST">
+                <form action={{url('/Aspirantes/'.$aspirante->numaspirante)}} method="POST">
                     @csrf  {{ method_field('DELETE')}}
-                <input type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+                <input type="submit" class="btn btn-outline-danger" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
                 </form>
     </tr>
     @endforeach
