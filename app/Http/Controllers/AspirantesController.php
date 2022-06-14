@@ -145,6 +145,7 @@ class AspirantesController extends Controller
         $iaspirante->email=$request->email;
         $iaspirante->carrera=$request->carrera;
         $iaspirante->save();
+        echo "aspirantes actualizados";
 
         //insercion en tabla requisitos
         $irequisitos= Requisitos::findOrFail($numaspirante);//::insert($datos);
@@ -157,6 +158,7 @@ class AspirantesController extends Controller
         $irequisitos->pruebaling=$request->pruebaling;
         $irequisitos->pruebapsico=$request->pruebapsico;
         $irequisitos->save();
+        echo "requisitos actualizados";
         //recibe datos a excepcion de token y metodo
         //$datos=request()->except(['_token','_method']);
         //aspirantes::where('numaspirante','=',$numaspirante)->update($datos);
@@ -164,7 +166,7 @@ class AspirantesController extends Controller
 //        $aspirantes=aspirantes::findOrFail($id);
 //        return view('Aspirantes.edit', compact('aspirantes') );
          $consultadatos['asp']=Aspirantes::paginate(15);
-         
+
         return view('Aspirantes.lista',$consultadatos);
     }
 
