@@ -53,9 +53,6 @@
 
 <form action="{{url('/Aspirantes/'.$aspirante->numaspirante)}}" method="post">
     @csrf
-    <?php
-    
-    ?>
     {{method_field('PATCH')}}
     @include('Aspirantes.form');
 

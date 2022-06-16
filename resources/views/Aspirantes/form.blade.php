@@ -60,7 +60,7 @@
                 <td><input class="input-group-text" type="text" name="pruebapsico" value={{isset($aspirante->pruebapsico)?$aspirante->pruebapsico:''}} ><br></td>
             </tr>
             <tr>
-                <td><input class="form-label" type="submit" class="btn button-green" value="Guardar"><br></td>
+                <td><input class="form-label" type="submit" class=" btn button-green" value="Guardar"><br></td>
                 <td><a class=" url string" href="{{url('Aspirantes/')}}">Regresar</a></td>
             </tr>
 
