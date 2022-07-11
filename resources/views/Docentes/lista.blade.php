@@ -50,7 +50,7 @@
           }
         }
       </style>
-    
+
    
 </head>
 <body style="background-color: silver;">
@@ -77,8 +77,8 @@
 
 <br>
 <br>
-<a  class=" action " href="{{url('Aspirantes/create')}}" >
-   <input class=" btn btn-primary" value="Agregar aspriantes" aria-hidden="true"></>
+<a  class=" action " href="{{url('Docentes/create')}}" >
+   <input class=" btn btn-primary" value="Agregar docente" class="fa fa-align-center" aria-hidden="true"></i>
 </a>
 <br>
 <br>
@@ -91,32 +91,31 @@
     </tr>
     <tr class=" table-primary">
         <th >#</th>
-        <th>numero de aspirantes</th>
-        <th>nombre</th>
-        <th>apellido</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
         <th>e-mail</th>
-        <th>carrera</th>
+        <th>Especialidad</th>
         <th>Acciones</th>
     </tr>
     </thead>
     <tbody class="tbody text-body">
 
 
-        @foreach ($asp as $aspirante)
+        @foreach ($docentes as $docente)
     <tr class=" table-responsive-xl">
 
-        <td>{{$aspirante->id}}</td>
-        <td>{{$aspirante->numaspirante}}</td>
-        <td>{{$aspirante->nombre}}</td>
-        <td>{{$aspirante->apellido}}</td>
-        <td>{{$aspirante->email}}</td>
-        <td>{{$aspirante->carrera}}</td>
+        <td>{{$docente->id}}</td>
+        <td>{{$docente->nombre}}</td>
+        <td>{{$docente->apellido}}</td>
+        <td>{{$docente->email}}</td>
+        <td>{{$docente->especialidad}}</td>
         <td>
-            <a class=' nav-link' href="{{url('/Aspirantes/'.$aspirante->numaspirante.'/edit')}}">
-            <input size="4" class=" btn btn-success" value="Editar" ><i class=" icon-open"></i></a>
-                <form action={{url('/Aspirantes/'.$aspirante->numaspirante)}} method="POST">
+            <a class=' nav-link' href="{{url('/Docentes/'.$docente->email.'/edit')}}">
+                <input size="4" class=" btn btn-success" value="Editar" >
+                <i class=" icon-open"></i></a>
+                <form class=" was-validated" action={{url('/Docentes/'.$docente->id)}} method="POST">
                     @csrf  {{ method_field('DELETE')}}
-                <input type="submit" class="btn btn-danger" size="4" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
+                    <input type="submit" class="btn btn-danger" size="4" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
                 </form>
     </tr>
     @endforeach

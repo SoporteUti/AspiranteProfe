@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Docentes;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class DocentesController extends Controller
 {
      /**
@@ -15,10 +15,9 @@ class DocentesController extends Controller
     public function index()
     {
         //
-        $consultadatos['docentes']=docentes::paginate(5);
-        return view('Docentes.lista',$consultadatos);
+        $doc['docentes']=docentes::paginate(25);
+        return view('Docentes.lista',$doc);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +28,6 @@ class DocentesController extends Controller
         //
         return view('Docentes.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -38,16 +36,16 @@ class DocentesController extends Controller
      */
     public function store(Request $request)
     {
+        $datos=request()->except('_token');
+        //return response()->json($datos);
         //
         // guardar regsitro en base de datos
-        $datos=request()->except('_token');
-        if($request->email !=""){
-        docentes::insert($datos); }else{echo "ingrese correo electronico";}
-        //return response()->json($datos);
+        if($request->email != ""){
+            docentes::insert($datos); }else{echo "ingrese correo electronico";}
+        //return response()->json($datos);             
         $consultadatos['docentes']=docentes::paginate(5);
         return view('Docentes.lista',$consultadatos);
     }
-
     /**
      * Display the specified resource.
      *
@@ -68,10 +66,13 @@ class DocentesController extends Controller
      */
     public function edit($email)
     {
+        //return response()->json($email);
         //
          //buscar registro en base de datos
-         $docentes=docentes::findOrFail($email);
-         return view('Docentes.edit', compact('docentes') );
+         //$docente=docentes::find($email);
+         $docente= DB::table('docentes')->where('email', $email)->first();
+         //echo dd($docente);
+         return view('Docentes.edit', compact('docente') );
     }
 
     /**
@@ -87,6 +88,7 @@ class DocentesController extends Controller
         //modifica datos en bd
         //recibe datos a excepcion de token y metodo
         $datos=request()->except(['_token','_method']);
+
         docentes::where('email','=',$email)->update($datos);
 
 //        $aspirante=aspirante::findOrFail($id);
@@ -101,11 +103,13 @@ class DocentesController extends Controller
      * @param  \App\Models\docentes  $docentes
      * @return \Illuminate\Http\Response
      */
-    public function destroy($email)
+    public function destroy($id)
     {
         //
         //borrar registro de base de datos
-        docentes::destroy($email);
+        //echo dd($id);
+        docentes::destroy($id);
+        
         return redirect('Docentes');
     }
 }

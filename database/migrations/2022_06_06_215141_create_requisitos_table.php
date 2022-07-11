@@ -22,7 +22,7 @@ class CreateRequisitosTable extends Migration
             $table->integer("anioingresoues")->nullable();
             $table->float("notapromb")->nullable();
             $table->string("notaavanzo")->nullable();
-            $table->int("notapaes")->nullable();
+            $table->integer("notapaes")->nullable();
             $table->integer("pruebaling")->nullable();
             $table->string("pruebapsico")->nullable();
 

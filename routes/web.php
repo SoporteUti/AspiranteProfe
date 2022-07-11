@@ -33,7 +33,7 @@ Route::get('/', function () {
 Route::resource('Aspirantes',AspirantesController::class);
 
 
-//Route::resource('Docentes',[DocentesController::class,'lista']);
+Route::resource('Docentes',DocentesController::class);
 
 //Route::resource('Modulo',[ModulosController::class,'lista']);
 
@@ -47,6 +47,6 @@ Route::resource('Aspirantes',AspirantesController::class);
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
