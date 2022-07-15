@@ -7,11 +7,11 @@
     </div>
     <div class="col-md-4">
         <label class="form-label" for="nombre">Nombre </label>
-        <input type="text" class="input-group-text" name="nombre" value={{isset($aspirante->nombre)?$aspirante->nombre:''}} >
+        <input type="text" class="input-group-text" name="nombre" required value={{isset($aspirante->nombre)?$aspirante->nombre:''}} >
     </div>
     <div class="col-md-4">
         <label class="form-label" for="Apellido">Apellido </label>
-        <input type="text" class="input-group-text" name="apellido" value={{isset($aspirante->apellido)?$aspirante->apellido:''}} >
+        <input type="text" class="input-group-text valid" name="apellido" value={{isset($aspirante->apellido)?$aspirante->apellido:''}} >
     </div>
 
     <div  class="col-md-4">
@@ -59,7 +59,8 @@
 
 
     
-         
+       
 </div>
+
 
   

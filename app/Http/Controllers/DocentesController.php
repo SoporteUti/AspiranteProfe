@@ -103,12 +103,13 @@ class DocentesController extends Controller
      * @param  \App\Models\docentes  $docentes
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($email)
     {
         //
         //borrar registro de base de datos
-        //echo dd($id);
-        docentes::destroy($id);
+        //echo dd($email);
+        docentes::destroy($email);
+        
         
         return redirect('Docentes');
     }
