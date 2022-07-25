@@ -45,6 +45,10 @@
 </head>
 
 <body class=" align-content-lg-center" style="background-color: beige;">
+  <div>
+    
+        
+    
   <nav class=' navbar justify-content-center embed-responsive' style="background-color: darkred;">
 
     <a class="nav-link " aria-current="page" href="{{url('Aspirantes/')}}"> 
@@ -77,7 +81,7 @@
     </form>
     </div>
 
-
+  </div>
 </body>
 
 </html>

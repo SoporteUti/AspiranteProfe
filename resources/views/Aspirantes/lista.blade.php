@@ -112,7 +112,7 @@
         <td>{{$aspirante->email}}</td>
         <td>{{$aspirante->carrera}}</td>
         <td>
-            <a class=' nav-link' href="{{url('/Aspirantes/'.$aspirante->id.'/edit')}}">
+            <a class=' nav-link' href="{{url('/Aspirantes/'.$aspirante->numaspirante.'/edit')}}">
             <input size="4" class=" btn btn-success" value="Editar" ><i class=" icon-open"></i></a>
                 <form action={{url('/Aspirantes/'.$aspirante->id)}} method="POST">
                     @csrf  {{ method_field('DELETE')}}

@@ -35,9 +35,9 @@ Route::resource('Aspirantes',AspirantesController::class);
 
 Route::resource('Docentes',DocentesController::class);
 
-Route::resource('Modulos',DocentesController::class);
+Route::resource('Modulos',ModulosController::class);
 
-Route::resource('Notas',DocentesController::class);
+Route::resource('Notas',NotasController::class);
 
 //Route::resource('Modulo',[ModulosController::class,'lista']);
 

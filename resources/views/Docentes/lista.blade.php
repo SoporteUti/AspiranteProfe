@@ -94,7 +94,7 @@
         <a class="nav-link " aria-current="page" href="{{url('Docentes/')}}">
             <input class="btn btn-outline-light" value="Docentes">
         </a>
-        <a class="nav-link " aria-current="page" href="#addmodulo">
+        <a class="nav-link " aria-current="page" href="{{url('Modulos/')}}">
             <input class="btn btn-outline-light" data-togle="modal" value="Modulos">
         </a>
         <a class="nav-link " aria-current="page" href="{{url('Notas/')}}">

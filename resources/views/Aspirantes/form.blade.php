@@ -1,5 +1,5 @@
 <div class=" row align-items-start" style="background-color:silver;">
-    <?php //echo dd($aspirante); ?>
+    
     
     <div class=" col-md-4" >
         <label class=" form-label" for="numaspirante">Numero de Aspirante </label>

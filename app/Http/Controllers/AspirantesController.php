@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Aspirantes;
 use App\Models\Requisitos;
+use Error;
 //use Aspirantes as GlobalAspirantes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Stmt\Catch_;
+use PhpParser\Node\Stmt\TryCatch;
 
 class AspirantesController extends Controller
 {
@@ -114,15 +117,21 @@ class AspirantesController extends Controller
     public function edit($numaspirante)
     {
         //buscar registro en base de datos
-
-        $aspirante=DB::table('aspirantes')
-        -> join('requisitos','aspirantes.numaspirante','=','requisitos.numaspirante')
-        ->where('aspirantes.numaspirante','=',$numaspirante)->get();
-        //echo dd($aspirante);
-    //    $asp=Aspirantes::findOrFail($id);
-      //  $req=Requisitos::findOrFail($id);
+        echo $numaspirante;
+        
+        $asp=DB::table('aspirantes')
+             -> join('requisitos','aspirantes.numaspirante','=','requisitos.numaspirante') 
+             -> where('aspirantes.numaspirante','=',$numaspirante)->get();
+             //echo dd($asp);
+             return view('Aspirantes.edit', compact('asp') );
+             
+             
+        //$asp=Aspirantes::findOrFail($id);
+        //$req=Requisitos::findOrFail($numaspirante);
+        //$req1=Aspirantes::findOrFail($numaspirante);
+        //echo dd($req1);
         //$aspirante=$asp.$req;
-        return view('Aspirantes.edit', compact('aspirante') );
+        
     }
 
     /**

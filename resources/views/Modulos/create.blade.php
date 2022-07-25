@@ -78,9 +78,9 @@
     <div class=" container">
 
 
-    <form class="row g-3 was-validated" action="{{ url('/Docentes') }}" method="post" enctype="multipart/form-data">
+    <form class="row g-3 was-validated" action="{{ url('/Modulos') }}" method="post" enctype="multipart/form-data">
         @csrf
-        @include('Docentes.formdocentes');
+        @include('Modulos.form');
 
     </form>
     </div>

@@ -15,6 +15,8 @@ class ModulosController extends Controller
     public function index()
     {
         //
+        $mod['modulos']=modulos::paginate(25);
+        return view('Modulos.lista',$mod);
     }
 
     /**
@@ -25,6 +27,7 @@ class ModulosController extends Controller
     public function create()
     {
         //
+        return view('Modulos.create');
     }
 
     /**
@@ -36,6 +39,17 @@ class ModulosController extends Controller
     public function store(Request $request)
     {
         //
+        $datos=request()->except('_token');
+        //return response()->json($datos);
+        //
+        // guardar regsitro en base de datos
+        if($request->idmodulo != "" && $request->nombremodulo!=""){
+            modulos::insert($datos);
+        echo"alert('datos ingresados');";
+        }else{echo "ingrese id y nombre de modulo";}
+        //return response()->json($datos);             
+        $consultadatos['modulos']=modulos::paginate(5);
+        return view('Modulos.lista',$consultadatos);
     }
 
     /**
@@ -47,6 +61,7 @@ class ModulosController extends Controller
     public function show(Modulos $modulos)
     {
         //
+        return view('Modulos.lista');
     }
 
     /**
@@ -78,8 +93,11 @@ class ModulosController extends Controller
      * @param  \App\Models\Modulos  $modulos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Modulos $modulos)
+    public function destroy($id)
     {
         //
+        modulos::destroy($id);
+              
+        return redirect('Modulos');
     }
 }

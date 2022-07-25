@@ -48,29 +48,31 @@
         <a class="nav-link " aria-current="page" href="{{url('Notas/')}}">
             <input class="btn btn-outline-light" value="Notas">
         </a>
-    
-    
     </nav>
     
-
     <!--a href="{//{url('Aspirantes/create')}}">Registrar aspirantes</a-->
-    <br><br><br>
+    
+    <br>
+    <br>
+    <br>
 
+    
+@foreach ($asp as $aspirante)
 
-@foreach ($aspirante as $aspirante)
-
-
+ 
 <form id="actualizar" action="{{url('/Aspirantes/'.$aspirante->numaspirante)}}" method="post">
     @csrf
     {{method_field('PATCH')}}
+
     @include('Aspirantes.form');
+    @endforeach
 
 </form>
-@endforeach
+
 
 </body>
 </html>
-<script>
+<!--script>
 $(document).ready(function() {
   $("#actualizar").validate({
     rules: {
@@ -99,4 +101,4 @@ $(document).ready(function() {
     }
   });
 });
-</script>
+</!--script-->

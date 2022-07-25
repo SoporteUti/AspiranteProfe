@@ -77,8 +77,8 @@
 
 <br>
 <br>
-<a  class=" action " href="{{url('Docentes/create')}}" >
-   <input class=" btn btn-primary" value="Agregar docente" class="fa fa-align-center" aria-hidden="true"></i>
+<a  class=" action " href="{{url('Modulos/create')}}" >
+   <input class=" btn btn-primary" value="Agregar módulo" class="fa fa-align-center" aria-hidden="true"></i>
 </a>
 <br>
 <br>
@@ -91,29 +91,25 @@
     </tr>
     <tr class=" table-primary">
         <th >#</th>
+        <th >id</th>
         <th>Nombre</th>
-        <th>Apellido</th>
-        <th>e-mail</th>
-        <th>Especialidad</th>
         <th>Acciones</th>
     </tr>
     </thead>
     <tbody class="tbody text-body">
 
 
-        @foreach ($docentes as $docente)
+        @foreach ($modulos as $modulo)
     <tr class=" table-responsive-xl">
 
-        <td>{{$docente->id}}</td>
-        <td>{{$docente->nombre}}</td>
-        <td>{{$docente->apellido}}</td>
-        <td>{{$docente->email}}</td>
-        <td>{{$docente->especialidad}}</td>
+        <td>{{$modulo->id}}</td>
+        <td>{{$modulo->idmodulo}}</td>
+        <td>{{$modulo->nombremodulo}}</td>
         <td>
-            <a class=' nav-link' href="{{url('/Docentes/'.$docente->email.'/edit')}}">
+            <a class=' nav-link' href="{{url('/Modulos/'.$modulo->id.'/edit')}}">
                 <input size="4" class=" btn btn-success" value="Editar" >
                 <i class=" icon-open"></i></a>
-                <form class=" was-validated" action={{url('/Docentes/'.$docente->email)}} method="POST">
+                <form class=" form-group" action={{url('/Modulos/'.$modulo->id)}} method="POST">
                     @csrf  {{ method_field('DELETE')}}
                     <input type="submit" class="btn btn-danger" size="4" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
                 </form>
