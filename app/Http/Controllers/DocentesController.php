@@ -64,15 +64,15 @@ class DocentesController extends Controller
      * @param  \App\Models\docentes  $docentes
      * @return \Illuminate\Http\Response
      */
-    public function edit($email)
+    public function edit($id)
     {
         //return response()->json($email);
         //
          //buscar registro en base de datos
          //$docente=docentes::find($email);
-         $docente= DB::table('docentes')->where('email', $email)->first();
-         //echo dd($docente);
-         return view('Docentes.edit', compact('docente') );
+         $doc= DB::table('docentes')->where('id','=', $id)->get();
+         //echo dd($doc);
+         return view('Docentes.edit', compact('doc') );
     }
 
     /**

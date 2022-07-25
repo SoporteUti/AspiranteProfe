@@ -71,16 +71,16 @@
     <br><br><br>
      
 
-@--foreach ($doc as $docente)
+@foreach ($doc as $docente)
 
 
-<form class=" was-validated" name="registro" action="{{url('/Docentes/'.$docente->email)}}" method="post">
+<form class=" " name="registro" action="{{url('/Docentes/'.$docente->id)}}" method="post">
     @csrf
     {{method_field('PATCH')}}
     @include('Docentes.formdocentes');
 
 </form>
-@--endforeach
+@endforeach
 
 </body>
 </html>

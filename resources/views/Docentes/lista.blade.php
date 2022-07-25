@@ -149,10 +149,10 @@
         <td>{{$docente->email}}</td>
         <td>{{$docente->especialidad}}</td>
         <td>
-            <a class=' nav-link' href="{{url('/Docentes/'.$docente->email.'/edit')}}">
+            <a class=' nav-link' href="{{url('/Docentes/'.$docente->id.'/edit')}}">
                 <input size="4" class=" btn btn-success" value="Editar" >
                 <i class=" icon-open"></i></a>
-                <form class=" was-validated" action={{url('/Docentes/'.$docente->email)}} method="POST">
+                <form class=" was-validated" action={{url('/Docentes/'.$docente->id)}} method="POST">
                     @csrf  {{ method_field('DELETE')}}
                     <input type="submit" class="btn btn-danger" size="4" onclick="return confirm('¿Quieres borrar?')" value="Borrar">
                 </form>
