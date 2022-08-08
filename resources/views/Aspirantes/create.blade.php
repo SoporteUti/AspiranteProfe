@@ -41,7 +41,17 @@
           }
         }
       </style>
- 
+ <script type="text/javascript">
+  function validanum(){
+              //alert(event.keyCode);
+        if((event.keyCode < 48 || event.keyCode > 57) && 
+        (event.keyCode < 96 || event.keyCode > 105) && 
+        event.keyCode !==190  && event.keyCode !==110 && 
+        event.keyCode !==8 && event.keyCode !==9  ){
+            return false;
+        }
+      }
+ </script>
 </head>
 
 <body class=" align-content-lg-center" style="background-color: beige;">
@@ -76,7 +86,7 @@
 
     <form id="ingreso" class="row g-3" action="{{ url('/Aspirantes') }}" method="post" enctype="multipart/form-data">
         @csrf
-        @include('Aspirantes.form');
+        @include('Aspirantes.form')
 
     </form>
     </div>
@@ -85,33 +95,5 @@
 </body>
 
 </html>
-<script languaje="javascript">
-  $(document).ready(function() {
-    $("#ingreso").validate({
-      rules: { numaspirante:{
-              required:true,
-              number:treu,
-              min:6
-          }
-          nombre : {
-          required: true
-          min:7
-        },
-        apellido: {
-          required: true,
-          
-          min: 5
-        },
-        email: {
-          required: true,
-          email: true
-        },
-        carrera: {
-          required:true,
-          
-        }
-      }
-    });
-  });
-  </script>
+
   

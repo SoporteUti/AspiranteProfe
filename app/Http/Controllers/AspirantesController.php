@@ -48,6 +48,10 @@ class AspirantesController extends Controller
     {
         // guardar regsitro en base de datos
         //$datos=request()->except('_token');
+        $validar=$request->validate([
+            'numaspirante'=>['required','min:5','numeric']
+            ]);
+
         $request->numaspirante;
         $request->nombre;
         $request->apellido;
