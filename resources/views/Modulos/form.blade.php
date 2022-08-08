@@ -3,14 +3,14 @@
     
     <div class="col-md-4">
         <label class="form-label" for="id modulo">Id de Modulo </label>
-        <input type="text" class="input-group-text has-validation" name="idmodulo" value={{isset($docente->nombre)?$docente->nombre:''}} >
+        <input type="text" class="input-group-text has-validation" pattern="[0-9]+" name="idmodulo" value={{isset($docente->nombre)?$docente->nombre:''}} >
         <script>
             
         </script>
     </div>
     <div class="col-md-4">
         <label class="form-label" for="Nombre">Módulo </label>
-        <input type="text" class=" form-text input-group-text" name="nombremodulo" value={{isset($docente->apellido)?$docente->apellido:''}} >
+        <input type="text" class=" form-text input-group-text" pattern="[A-Za-záéíóú ]+" name="nombremodulo" value={{isset($docente->apellido)?$docente->apellido:''}} >
     </div>
    
     <br>

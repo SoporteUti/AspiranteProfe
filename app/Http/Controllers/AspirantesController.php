@@ -58,16 +58,23 @@ class AspirantesController extends Controller
         $request->email;
         $request->carrera;
         $request->anioegresob;
+        //if($request->anioegresob=null){$request->anioegreso=0;}
         $request->anioingresoues;
+        //if($request->anioingresob=null){$request->anioingreso=0;}
         $request->notapromb;
+        //if($request->notapromb=null){$request->notapromb=0;}
         $request->notaavanzo;
+        //if($request->notaavanzo=""){$request->notapromb="-";}
         $request->notapaes;
+        //if($request->notapaes=null){$request->notapaes=0;}
         $request->pruebaling;
+        //if($request->pruebaling=null){$request->pruebaling=0;}
         $request->pruebapsico;
+        //if($request->pruebapsico=""){$request->pruebapsico="-";}
         //$num=$request->numaspirante;  captura un valor del arreglo de datos enviados por el form
         /*numaspirante,
         //echo $num;
-       // echo dd($request);*/
+        echo dd($request);*/
 
         if($request->numaspirante >0){
             //insercion en tabla aspirante
@@ -121,12 +128,12 @@ class AspirantesController extends Controller
     public function edit($numaspirante)
     {
         //buscar registro en base de datos
-        echo $numaspirante;
+        //echo $numaspirante;
         
         $asp=DB::table('aspirantes')
              -> join('requisitos','aspirantes.numaspirante','=','requisitos.numaspirante') 
              -> where('aspirantes.numaspirante','=',$numaspirante)->get();
-             //echo dd($asp);
+            // echo dd($asp);
              return view('Aspirantes.edit', compact('asp') );
              
              

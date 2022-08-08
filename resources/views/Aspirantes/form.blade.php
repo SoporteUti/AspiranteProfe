@@ -25,11 +25,11 @@
     </div>
     <div  class="col-md-4">
         <label class="form-label" for="anioegresob">Año de Egreso de Bachillerato </label></td>
-        <input class="input-group-text" type="text" name="anioegresob" pattern="[0-9]+" required maxlength="4"  value={{isset($aspirante->anioegresob)?$aspirante->anioegresob:''}} >
+        <input class="input-group-text" type="text" name="anioegresob" pattern="[0-9]+" maxlength="4"  value={{isset($aspirante->anioegresob)?$aspirante->anioegresob:''}} >
     </div>
     <div  class="col-md-4">
         <label class="form-label" for="anioingresoues">Año de Ingreso a la UES </label>
-        <input class="input-group-text" type="text" pattern="[0-9]+" required name="anioingresoues" value={{isset($aspirante->anioingresoues)?$aspirante->anioingresoues:''}} >
+        <input class="input-group-text" type="text" pattern="[0-9]+" name="anioingresoues" value={{isset($aspirante->anioingresoues)?$aspirante->anioingresoues:''}} >
     </div>
     <div  class="col-md-4">
         <label class="form-label" for="notapromb">Nota proemdio de bachillerato </label>
@@ -48,11 +48,25 @@
         <input class="input-group-text" type="text" name="pruebaling" value={{isset($aspirante->pruebaling)?$aspirante->pruebaling:''}} >
     </div>
     <div  class="col-md-4">
+       
         <label class="form-label" for="pruebapsico">resultado de prueba psicologica </label>
-        <select class=" input-group-text" name="pruebapsico" id="" value={{isset($aspirante->pruebapsico)?$aspirante->pruebapsico:''}}>
-            <option value=""></option>
-            <option value="a">Apto</option>
-            <option value="na">No Apto</option>
+        <select class=" input-group-text" name="pruebapsico" id="pruebapsico" value={{isset($aspirante->pruebapsico)?$aspirante->pruebapsico:''}}>
+            <?php
+            if($aspirante->pruebapsico=='a'){
+                echo "  <option value=''></option>
+                        <option selected='selected' value='a'>Apto</option>
+                        <option value='na'>No Apto</option>";
+            }elseif ($aspirante->pruebapsico=='na') {
+                echo "  <option value=''></option>
+                        <option  value='a'>Apto</option>
+                        <option selected='selected' value='na'>No Apto</option>";
+            }else{
+                echo "  <option value=''></option>
+                        <option value='a'>Apto</option>
+                        <option value='na'>No Apto</option>";
+                }
+        ?>
+          
         </select>
 
     </div>
